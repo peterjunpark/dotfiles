@@ -18,6 +18,10 @@ return {
         TelescopePromptNormal = { fg = "text", bg = "surface" },
         TelescopePromptBorder = { fg = "surface", bg = "surface" },
         MiniIndentscopeSymbol = { fg = "iris", bg = "base" },
+        -- these are mostly for oil.nvim
+        NormalFloat = { fg = "subtle", bg = "overlay" },
+        FloatTitle = { fg = "base", bg = "pine" },
+        FloatBorder = { fg = "overlay", bg = "overlay" },
       },
     },
   },
@@ -47,12 +51,13 @@ return {
     },
   },
   {
-    -- disable clock in status line
     "nvim-lualine/lualine.nvim",
     opts = {
       sections = {
+        -- disable clock in status line
         lualine_z = {},
       },
+      extensions = { "oil", "lazy" },
     },
   },
   {

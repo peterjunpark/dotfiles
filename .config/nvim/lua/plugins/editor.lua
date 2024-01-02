@@ -5,13 +5,24 @@ return {
     config = function()
       local oil = require("oil")
       oil.setup({
+        lsp_rename_autosave = "unmodified",
+        view_options = {
+          is_hidden_file = function(name)
+            if name == ".." then
+              return false
+            else
+              return vim.startswith(name, ".")
+            end
+          end,
+        },
         keymaps = {
-          ["<CR>"] = "actions.select",
           ["q"] = "actions.close",
           ["|"] = "actions.select_vsplit",
-          ["-"] = "actions.select_split",
+          ["_"] = "actions.select_split", -- inconsistent, but i like "-" as go to parent
           ["="] = "actions.open_cwd",
-          ["_"] = "actions.parent",
+        },
+        float = {
+          border = "solid",
         },
       })
       vim.keymap.set("n", "<leader>e", oil.toggle_float, { silent = true, desc = "File Explorer (float)" })
