@@ -56,27 +56,6 @@ return {
     },
   },
   {
-    -- remove x icons in tabs
-    "akinsho/bufferline.nvim",
-    keys = {
-      { "<Tab>", "<cmd>BufferLineCycleNext<CR>", desc = "Next Buffer" },
-      { "<Backspace>", "<cmd>BufferLineCyclePrev<CR>", desc = "Previous Buffer" },
-    },
-    opts = {
-      options = {
-        show_buffer_close_icons = false,
-        show_close_icons = false,
-      },
-    },
-  },
-  {
-    -- change indent scope line from solid to dashed
-    "echasnovski/mini.indentscope",
-    opts = {
-      symbol = "╎",
-    },
-  },
-  {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     opts = function(_, opts)

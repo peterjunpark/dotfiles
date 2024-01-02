@@ -19,6 +19,8 @@ require("lazy").setup({
     -- python
     { import = "lazyvim.plugins.extras.lang.python" },
     -- { import = "lazyvim.plugins.extras.formatting.black" },
+    -- treesitter for dotfiles?
+    { import = "lazyvim.plugins.extras.util.dot" },
     -- misc
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
