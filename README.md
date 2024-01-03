@@ -5,5 +5,15 @@
   - [Nerd Font symbols](https://www.nerdfonts.com/font-downloads)
 - **Colour schemes**: [Rose Pine](https://rosepinetheme.com/)
 - [**lazygit**](https://github.com/jesseduffield/lazygit)
-- **telescope.nvim dependencies**: `brew install fd ripgrep`
 - [**exa**](https://github.com/ogham/exa)
+
+```sh
+brew install \
+fish \
+neovim \
+fd \
+ripgrep \
+eza \
+lazygit \
+stow \
+```
