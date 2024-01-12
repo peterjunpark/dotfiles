@@ -4,24 +4,23 @@ return {
     "rose-pine/neovim",
     name = "rose-pine",
     opts = {
-      variant = "moon",
-      dark_variant = "moon",
+      dark_variant = "main",
       highlight_groups = {
-        TelescopeBorder = { fg = "overlay", bg = "overlay" },
+        TelescopeBorder = { fg = "surface", bg = "surface" },
         TelescopeNormal = { fg = "subtle", bg = "overlay" },
         TelescopeSelection = { fg = "text", bg = "highlight_med" },
         TelescopeSelectionCaret = { fg = "love", bg = "highlight_med" },
         TelescopeMultiSelection = { fg = "text", bg = "highlight_high" },
-        TelescopeTitle = { fg = "base", bg = "love" },
-        TelescopePromptTitle = { fg = "base", bg = "pine" },
-        TelescopePreviewTitle = { fg = "base", bg = "iris" },
-        TelescopePromptNormal = { fg = "text", bg = "surface" },
+        TelescopeTitle = { fg = "base", bg = "pine" },
+        TelescopePromptTitle = { fg = "base", bg = "iris" },
+        TelescopePreviewTitle = { fg = "base", bg = "love" },
+        TelescopePromptNormal = { fg = "text", bg = "overlay" },
         TelescopePromptBorder = { fg = "surface", bg = "surface" },
-        MiniIndentscopeSymbol = { fg = "iris", bg = "base" },
-        -- these are mostly for oil.nvim
-        NormalFloat = { fg = "subtle", bg = "overlay" },
-        FloatTitle = { fg = "base", bg = "pine" },
-        FloatBorder = { fg = "overlay", bg = "overlay" },
+        DashboardHeader = { fg = "iris", bg = "base" },
+        DashboardFooter = { fg = "pine", bg = "base" },
+        MiniAnimateCursor = { fg = "none", bg = "highlight_high" },
+        -- this is for oil.nvim ... DOESN'T WORK RN TODO:
+        FloatTitle = { fg = "base", bg = "iris" },
       },
     },
   },
@@ -53,6 +52,9 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = {
+      options = {
+        theme = "auto",
+      },
       sections = {
         -- disable clock in status line
         lualine_z = {},

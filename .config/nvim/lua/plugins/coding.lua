@@ -23,11 +23,12 @@ return {
     opts = {
       -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
       ensure_installed = {
-        "astro",
         "css",
         "diff",
         "dockerfile",
         "fish",
+        "go",
+        "gomod",
         "graphql",
         "html",
         "http",

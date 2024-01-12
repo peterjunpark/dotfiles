@@ -16,10 +16,12 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
+    -- go
+    { import = "lazyvim.plugins.extras.lang.go" },
     -- python
     { import = "lazyvim.plugins.extras.lang.python" },
     -- { import = "lazyvim.plugins.extras.formatting.black" },
-    -- treesitter for dotfiles?
+    -- treesitter for dotfiles
     { import = "lazyvim.plugins.extras.util.dot" },
     -- misc
     { import = "lazyvim.plugins.extras.lang.json" },

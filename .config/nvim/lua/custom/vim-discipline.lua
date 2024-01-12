@@ -14,6 +14,7 @@ function M.cowboy()
         count = 0
       end
       if count >= 10 then
+        ---@diagnostic disable-next-line: param-type-mismatch
         ok, id = pcall(vim.notify, "Hold it, cowboy!", vim.log.levels.WARN, {
           icon = "🤠",
           replace = id,
