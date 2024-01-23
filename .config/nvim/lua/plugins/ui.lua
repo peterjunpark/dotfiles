@@ -3,6 +3,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
+    priority = 1000,
     opts = {
       dark_variant = "main",
       highlight_groups = {
@@ -11,15 +12,18 @@ return {
         TelescopeSelection = { fg = "text", bg = "highlight_med" },
         TelescopeSelectionCaret = { fg = "love", bg = "highlight_med" },
         TelescopeMultiSelection = { fg = "text", bg = "highlight_high" },
-        TelescopeTitle = { fg = "base", bg = "pine" },
+        TelescopeTitle = { fg = "base", bg = "foam" },
         TelescopePromptTitle = { fg = "base", bg = "iris" },
         TelescopePreviewTitle = { fg = "base", bg = "love" },
         TelescopePromptNormal = { fg = "text", bg = "overlay" },
         TelescopePromptBorder = { fg = "surface", bg = "surface" },
-        DashboardHeader = { fg = "iris", bg = "base" },
+        DashboardHeader = { fg = "rose", bg = "base" },
         DashboardFooter = { fg = "pine", bg = "base" },
-        MiniAnimateCursor = { fg = "none", bg = "highlight_high" },
-        -- this is for oil.nvim ... DOESN'T WORK RN TODO:
+        MiniIndentscopeSymbol = { fg = "muted", bg = "none" },
+        IblIndent = { fg = "highlight_med", bg = "none" },
+        IblScope = { fg = "highlight_med", bg = "none" },
+        IblWhitespace = { fg = "highlight_med", bg = "none" },
+        -- this is for oil.nvim
         FloatTitle = { fg = "base", bg = "iris" },
       },
     },
@@ -68,13 +72,13 @@ return {
     opts = function(_, opts)
       local logo = [[
 
-███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-                                                  
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗          Z
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║      Z    
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║   z       
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ z         
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║           
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝           
+                                                             
               ]]
       logo = string.rep("\n", 5) .. logo .. "\n\n"
       opts.config.header = vim.split(logo, "\n")

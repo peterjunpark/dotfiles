@@ -1,0 +1,23 @@
+theme = "github_dark_dimmed"
+
+[editor]
+auto-completion = true
+auto-format = true
+auto-info = true
+auto-save = true
+bufferline = "multiple"
+line-number = "relative"
+mouse = false
+scrolloff = 1
+undercurl = true
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.indent-guides]
+render = true
+
+[editor.soft-wrap]
+enable = true

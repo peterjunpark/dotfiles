@@ -18,11 +18,24 @@ return {
             end
           end,
         },
+        use_default_keymaps = false,
         keymaps = {
-          ["q"] = "actions.close",
+          ["<CR>"] = "actions.select",
           ["|"] = "actions.select_vsplit",
           ["_"] = "actions.select_split",
+          ["q"] = "actions.close",
           ["="] = "actions.open_cwd",
+          ["-"] = "actions.parent",
+          ["`"] = "actions.cd",
+          ["~"] = "actions.tcd",
+          ["gp"] = "actions.preview",
+          ["gl"] = "actions.refresh",
+          ["g."] = "actions.toggle_hidden",
+          ["gs"] = "actions.change_sort",
+          ["g?"] = "actions.show_help",
+          -- ["gx"] = "actions.open_external",
+          -- ["<C-t>"] = "actions.select_tab",
+          -- ["g\\"] = "actions.toggle_trash",
         },
         float = {
           border = "solid",
@@ -77,21 +90,5 @@ return {
     opts = {
       symbol = "╎",
     },
-  },
-  {
-    "SmiteshP/nvim-navic",
-    opts = {
-      highlight = false,
-    },
-  },
-  -- disable
-  {
-    -- using oil.nvim instead
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
-  {
-    "folke/flash.nvim",
-    enabled = false,
   },
 }

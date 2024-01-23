@@ -13,4 +13,11 @@ alias v="nvim"
 alias l="eza"
 alias cat="bat"
 
-thefuck --alias | source
+zoxide init fish | source
+
+# pnpm
+set -gx PNPM_HOME /Users/peter/Library/pnpm
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
