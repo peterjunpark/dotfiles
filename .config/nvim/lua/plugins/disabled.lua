@@ -10,7 +10,14 @@ return {
   },
   {
     "folke/tokyonight.nvim",
-    enabled = false,
+    -- enabled = false,
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
   },
   {
     "catppuccin/nvim",

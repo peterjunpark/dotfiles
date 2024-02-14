@@ -7,7 +7,7 @@ return {
     opts = {
       dark_variant = "main",
       highlight_groups = {
-        TelescopeBorder = { fg = "surface", bg = "surface" },
+        TelescopeBorder = { fg = "overlay", bg = "overlay" },
         TelescopeNormal = { fg = "subtle", bg = "overlay" },
         TelescopeSelection = { fg = "text", bg = "highlight_med" },
         TelescopeSelectionCaret = { fg = "love", bg = "highlight_med" },
@@ -15,15 +15,18 @@ return {
         TelescopeTitle = { fg = "base", bg = "foam" },
         TelescopePromptTitle = { fg = "base", bg = "iris" },
         TelescopePreviewTitle = { fg = "base", bg = "love" },
-        TelescopePromptNormal = { fg = "text", bg = "overlay" },
+        TelescopePromptNormal = { fg = "text", bg = "surface" },
         TelescopePromptBorder = { fg = "surface", bg = "surface" },
-        DashboardHeader = { fg = "rose", bg = "base" },
+        DashboardHeader = { fg = "iris", bg = "base" },
         DashboardFooter = { fg = "pine", bg = "base" },
+        MiniAnimateCursor = { fg = "none", bg = "highlight_high" },
         MiniIndentscopeSymbol = { fg = "muted", bg = "none" },
         IblIndent = { fg = "highlight_med", bg = "none" },
         IblScope = { fg = "highlight_med", bg = "none" },
         IblWhitespace = { fg = "highlight_med", bg = "none" },
         -- this is for oil.nvim
+        NormalFloat = { fg = "text", bg = "overlay" },
+        FloatBorder = { fg = "none", bg = "overlay" },
         FloatTitle = { fg = "base", bg = "iris" },
       },
     },
@@ -83,16 +86,5 @@ return {
       logo = string.rep("\n", 5) .. logo .. "\n\n"
       opts.config.header = vim.split(logo, "\n")
     end,
-  },
-  {
-    -- remove useless entries in which-key
-    "folke/which-key.nvim",
-    opts = {
-      key_labels = {
-        ["<ScrollWheelUp>"] = "",
-        ["<ScrollWheelDown>"] = "",
-        ["<M-i>"] = "",
-      },
-    },
   },
 }

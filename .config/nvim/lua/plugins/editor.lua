@@ -91,4 +91,20 @@ return {
       symbol = "╎",
     },
   },
+  {
+    -- remove useless entries in which-key
+    "folke/which-key.nvim",
+    opts = {
+      -- ignore_missing = true,
+      key_labels = {
+        ["<ScrollWheelUp>"] = nil,
+        ["<ScrollWheelDown>"] = nil,
+        ["<M-i>"] = nil,
+      },
+    },
+  },
+  {
+    "LunarVim/bigfile.nvim",
+    config = true,
+  },
 }
