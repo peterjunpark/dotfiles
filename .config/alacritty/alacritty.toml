@@ -1,0 +1,10 @@
+import = ["~/.config/alacritty/rose-pine.toml"]
+
+[window]
+decorations = "Transparent"
+opacity = 0.95
+option_as_alt = "OnlyLeft"
+
+[font]
+normal = { family = "0xProto" }
+size = 16.0

@@ -6,18 +6,23 @@ auto-format = true
 auto-info = true
 auto-save = true
 bufferline = "multiple"
+color-modes = true
+cursorline = true
 line-number = "relative"
 mouse = false
 scrolloff = 1
 undercurl = true
 
-[editor.statusline]
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
+[editor.file-picker]
+hidden = false
 
 [editor.indent-guides]
 render = true
 
 [editor.soft-wrap]
 enable = true
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
