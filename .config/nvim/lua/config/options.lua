@@ -2,8 +2,8 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
--- disable mouse
-vim.opt.mouse = ""
+local opt = vim.opt
 
 -- offset by 1 line when topping or bottoming current line
-vim.opt.scrolloff = 1
+opt.scrolloff = 1
+opt.smartindent = false

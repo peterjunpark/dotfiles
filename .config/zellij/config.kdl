@@ -29,7 +29,7 @@ keybinds clear-defaults=true {
     }
 
     // pane
-    shared_except "pane" "locked" "renamepane" "renametab" {
+    shared_except "pane" "locked" "renamepane" "renametab" "entersearch" {
         bind "m" { SwitchToMode "Pane"; }
     }
     pane {
@@ -50,12 +50,12 @@ keybinds clear-defaults=true {
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
     }
     renamepane {
-        bind "Ctrl c" { SwitchToMode "Normal"; }
+        bind "Ctrl c" { SwitchToMode "Locked"; }
         bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
     }
 
     // tab
-    shared_except "tab" "locked" "renamepane" "renametab" {
+    shared_except "tab" "locked" "renamepane" "renametab" "entersearch" {
         bind "t" { SwitchToMode "Tab"; }
     }
     tab {
@@ -82,12 +82,12 @@ keybinds clear-defaults=true {
         bind "Tab" { ToggleTab; }
     }
     renametab {
-        bind "Ctrl c" { SwitchToMode "Normal"; }
+        bind "Ctrl c" { SwitchToMode "Locked"; }
         bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
     }
     
     // move
-    shared_except "move" "locked" "renamepane" "renametab" {
+    shared_except "move" "locked" "renamepane" "renametab" "entersearch" {
         bind "v" { SwitchToMode "Move"; }
     }
     move {
@@ -102,7 +102,7 @@ keybinds clear-defaults=true {
     }
 
     // resize
-    shared_except "resize" "locked" "renamepane" "renametab" {
+    shared_except "resize" "locked" "renamepane" "renametab" "entersearch" {
         bind "z" { SwitchToMode "Resize"; }
     }
     resize {
@@ -121,14 +121,14 @@ keybinds clear-defaults=true {
     }
 
     // scroll
-    shared_except "scroll" "locked" "renamepane" "renametab" {
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
+    shared_except "scroll" "locked" "renamepane" "renametab" "entersearch" {
+        bind "s" { SwitchToMode "Scroll"; }
     }
     scroll {
-        bind "Ctrl s" { SwitchToMode "Normal"; }
+        bind "s" { SwitchToMode "Normal"; }
         bind "Ctrl c" { SwitchToMode "Locked"; }
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
-        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
@@ -162,7 +162,7 @@ keybinds clear-defaults=true {
     }
 
     // session
-    shared_except "session" "locked" "renamepane" "renametab" {
+    shared_except "session" "locked" "renamepane" "renametab" "entersearch" {
         bind "o" { SwitchToMode "Session"; }
     }
     session {
@@ -187,7 +187,7 @@ plugins {
     session-manager { path "session-manager"; }
 }
 
-theme "rose-pine"
+theme "tokyo-night"
 
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL

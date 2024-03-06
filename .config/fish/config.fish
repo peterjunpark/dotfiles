@@ -7,12 +7,9 @@ function fish_greeting
 end
 
 alias j="zellij"
-alias vim="nvim"
-alias vi="nvim"
-alias v="nvim"
+alias vim="env TERM=wezterm nvim"
 alias l="eza"
 alias cat="bat"
-alias unity="nvim --listen 127.0.0.1:42069"
 
 zoxide init fish | source
 

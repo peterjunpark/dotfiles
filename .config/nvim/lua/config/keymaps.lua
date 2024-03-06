@@ -1,8 +1,8 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
--- local discipline = require("custom.vim-discipline")
--- discipline.cowboy()
+local discipline = require("custom.vim-discipline")
+discipline.cowboy()
 
 local key = vim.keymap
 local opts = { silent = true, noremap = true }
@@ -11,6 +11,7 @@ opts.desc = "Lsp Restart"
 key.set("n", "<leader>cL", "<cmd>LspRestart<CR>", opts)
 
 -- yeet to black hole register on x
+key.set({ "n", "v" }, "x", '"_x')
 
 -- restore default H and L
 opts.desc = "Top of viewport"
