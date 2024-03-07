@@ -4,7 +4,6 @@ return {
     opts = {
       style = "moon",
       styles = {
-        comments = { italic = false },
         keywords = { italic = false },
       },
       on_highlights = function(hl, c)
