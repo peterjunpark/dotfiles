@@ -1,6 +1,7 @@
 return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- event = "VeryLazy",
   config = function()
     local oil = require("oil")
     oil.setup({
@@ -37,17 +38,13 @@ return {
         -- ["g\\"] = "actions.toggle_trash",
       },
       float = {
-        border = "solid",
         max_width = 100,
         max_height = 32,
       },
-      progress = {
-        border = "solid",
-      },
       skip_confirm_for_simple_edits = true,
     })
-    vim.keymap.set("n", "<leader>e", oil.toggle_float, { silent = true, desc = "Oil (File Explorer)" })
-    vim.keymap.set("n", "<leader>o", function()
+    vim.keymap.set("n", "<leader>o", oil.toggle_float, { silent = true, desc = "Oil (Float)" })
+    vim.keymap.set("n", "<leader>wo", function()
       vim.cmd("vsplit | wincmd l")
       oil.open()
     end, { silent = true, desc = "Oil (Vsplit)" })

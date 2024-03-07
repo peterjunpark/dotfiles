@@ -2,11 +2,8 @@ return {
   "nvim-lualine/lualine.nvim",
   opts = {
     options = {
-      theme = "tokyonight",
-    },
-    sections = {
-      -- disable clock in status line
-      lualine_z = {},
+      section_separators = { left = "", right = "" },
+      component_separators = { left = "", right = "" },
     },
     extensions = { "oil", "lazy" },
   },
