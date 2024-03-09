@@ -6,7 +6,6 @@ function fish_greeting
     fortune
 end
 
-alias j="zellij"
 alias vim="env TERM=wezterm nvim"
 alias l="eza"
 alias cat="bat"
@@ -19,4 +18,6 @@ if not string match -q -- $PNPM_HOME $PATH
     set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+# mise-en-place
 ~/.local/bin/mise activate fish | source
