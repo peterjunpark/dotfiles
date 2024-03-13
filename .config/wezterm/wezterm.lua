@@ -46,7 +46,17 @@ config.use_resize_increments = true
 
 --- KEYBINDINGS
 
+-- show current key table in status area
+wezterm.on("update-right-status", function(window, _)
+	local name = window:active_key_table()
+	if name then
+		name = "key_table: " .. name
+	end
+	window:set_right_status(name or "")
+end)
+
 local act = wezterm.action
+
 config.leader = { key = "Space", mods = "SHIFT", timeout_milliseconds = 1000 }
 config.keys = {
 	-- command palette
@@ -69,6 +79,27 @@ config.keys = {
 	-- scroll half page
 	{ key = "h", mods = "CMD", action = act.ScrollByPage(-0.5) },
 	{ key = "l", mods = "CMD", action = act.ScrollByPage(0.5) },
+	-- push resize pane table
+	{
+		key = "r",
+		mods = "LEADER",
+		action = act.ActivateKeyTable({ name = "RESIZE_PANE", one_shot = false, timeout_milliseconds = 3000 }),
+	},
+}
+
+local pop_key_table = { key = "Escape", action = "PopKeyTable" }
+
+config.key_tables = {
+	-- new_pane = {
+	-- 	{ key = "", action = },
+	-- },
+	RESIZE_PANE = {
+		pop_key_table,
+		{ key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
+		{ key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
+		{ key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
+		{ key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
+	},
 }
 
 return config

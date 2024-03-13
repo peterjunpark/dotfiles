@@ -4,7 +4,6 @@ return {
   config = function()
     local oil = require("oil")
     oil.setup({
-      lsp_rename_autosave = "unmodified",
       columns = {
         "icon",
       },
@@ -41,6 +40,9 @@ return {
         max_height = 32,
       },
       skip_confirm_for_simple_edits = true,
+      lsp_file_methods = {
+        autosave_changes = "unmodified",
+      },
     })
     vim.keymap.set("n", "<leader>o", oil.open, { desc = "Oil" })
     vim.keymap.set("n", "<leader>O", oil.toggle_float, { desc = "Oil (Float)" })
