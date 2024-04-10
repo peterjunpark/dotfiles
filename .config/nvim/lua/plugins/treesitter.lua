@@ -6,10 +6,6 @@ return {
       -- rust-related
       "ron",
       "rust",
-      -- elixir-related
-      "eex",
-      "elixir",
-      "heex",
       -- lua-related
       "lua",
       "luadoc",
@@ -20,16 +16,13 @@ return {
       "graphql",
       "javascript",
       "jsdoc",
-      "prisma",
       "scss",
       "styled",
-      "svelte",
       "tsx",
       "typescript",
       --
       "cmake",
       "cpp",
-      "c_sharp",
       "diff",
       "dockerfile",
       "fish",
@@ -38,7 +31,6 @@ return {
       "jsonc",
       "markdown",
       "markdown_inline",
-      "norg",
       "python",
       "query",
       "regex",

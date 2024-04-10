@@ -1,6 +1,0 @@
-[[languages]]
-
-[language-server.omnisharp]
-command = "dotnet"
-args = ["/Users/peter/omnisharp-osx-arm64-net6.0/OmniSharp.dll", "--languageserver"]
-diagnostic-severity = "Hint"

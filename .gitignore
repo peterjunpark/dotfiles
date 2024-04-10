@@ -1,5 +1,7 @@
 .DS_Store
 
+lazygit
+
 # fish
 fishd*
 ./.config/fish/fish_variables

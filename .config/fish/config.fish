@@ -11,13 +11,3 @@ alias l="eza"
 alias cat="bat"
 
 zoxide init fish | source
-
-# pnpm
-set -gx PNPM_HOME /Users/peter/Library/pnpm
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
-
-# mise-en-place
-~/.local/bin/mise activate fish | source
