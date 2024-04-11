@@ -11,3 +11,5 @@ alias l="eza"
 alias cat="bat"
 
 zoxide init fish | source
+
+pyenv init - | source

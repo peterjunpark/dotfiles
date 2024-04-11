@@ -20,11 +20,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.rust" },
     -- c++
     { import = "lazyvim.plugins.extras.lang.clangd" },
-    -- { import = "lazyvim.plugins.extras.lang.cmake" },
-    -- c#
-    { import = "lazyvim.plugins.extras.lang.omnisharp" },
-    -- elixir
-    { import = "lazyvim.plugins.extras.lang.elixir" },
+    { import = "lazyvim.plugins.extras.lang.cmake" },
+    -- python
+    { import = "lazyvim.plugins.extras.lang.python" },
     -- debug
     { import = "lazyvim.plugins.extras.dap.core" },
     -- misc
