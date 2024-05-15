@@ -6,6 +6,7 @@ function fish_greeting
     fortune
 end
 
+alias o="explorer.exe"
 alias vim="env TERM=wezterm nvim"
 alias l="eza"
 alias cat="bat"

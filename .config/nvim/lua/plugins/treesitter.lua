@@ -3,6 +3,10 @@ return {
   opts = {
     -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
     ensure_installed = {
+      -- docs
+      "rst",
+      "markdown",
+      "markdown_inline",
       -- rust-related
       "ron",
       "rust",
@@ -29,12 +33,9 @@ return {
       "http",
       "json",
       "jsonc",
-      "markdown",
-      "markdown_inline",
       "python",
       "query",
       "regex",
-      "rst",
       "sql",
       "toml",
       "yaml",
