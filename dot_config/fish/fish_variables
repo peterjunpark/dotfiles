@@ -7,6 +7,17 @@ SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejorgebucaran/hydro
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR _hydro_git_134579:main\x20
 SETUVAR _hydro_git_136797:\x1d
+SETUVAR _hydro_git_1968:main\u2022\x20
+SETUVAR _hydro_git_2323:\x1d
+SETUVAR _hydro_git_2914:main\u2022\x20
+SETUVAR _hydro_git_29712:main\u2022\x20
+SETUVAR _hydro_git_2975:\x1d
+SETUVAR _hydro_git_34267:\x1d
+SETUVAR _hydro_git_38393:main\u2022\x20
+SETUVAR _hydro_git_42462:\x1d
+SETUVAR _hydro_git_42561:main\u2022\x20
+SETUVAR _hydro_git_42584:main\u2022\x20
+SETUVAR _hydro_git_42623:main\x20
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:blue
@@ -29,7 +40,7 @@ SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrbl
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
-SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_key_bindings:fish_vi_key_bindings
 SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
