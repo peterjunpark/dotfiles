@@ -3,18 +3,13 @@ if status is-interactive
 end
 
 # Generated for envman. Do not edit.
-test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
+test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
 
 starship init fish | source
 
 fzf --fish | source
 
 zoxide init fish | source
-
-
-# Generated for envman. Do not edit.
-test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
-
 
 # added by Webi for pyenv
 status is-login; and pyenv init --path | source
