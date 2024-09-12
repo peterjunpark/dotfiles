@@ -35,6 +35,10 @@ return {
         ['g.'] = 'actions.toggle_hidden',
         ['g\\'] = 'actions.toggle_trash',
       },
+      float = {
+        max_width = 90,
+        max_height = 40,
+      }
     }
 
     vim.keymap.set('n', '<leader>e', oil.toggle_float, { desc = 'Explorer' })

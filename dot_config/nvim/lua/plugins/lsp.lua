@@ -163,18 +163,13 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
+        -- go
         gopls = {},
+        -- typescript
+        ts_ls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
-        --
-
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -184,8 +179,8 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              -- Ignore Lua_LS's noisy `missing-fields` warnings
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },

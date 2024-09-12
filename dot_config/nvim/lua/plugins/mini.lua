@@ -29,7 +29,6 @@ return { -- Collection of various small independent plugins/modules
     local statusline = require 'mini.statusline'
     -- set use_icons to true if you have a Nerd Font
     statusline.setup()
-
     -- You can configure sections in the statusline by overriding their
     -- default behavior. For example, here we set the section for
     -- cursor location to LINE:COLUMN
@@ -38,7 +37,17 @@ return { -- Collection of various small independent plugins/modules
       return '%2l:%-2v'
     end
 
-    require('mini.starter').setup()
+    local starter = require 'mini.starter'
+    local pad = string.rep(' ', 14)
+    local s_section = function(name, action, section)
+      return { name = name, action = action, section = pad .. section }
+    end
 
+    starter.setup {
+      items = {
+        s_section('Restore session', [[lua require("persistence").load()]], ''),
+      },
+      footer = " peterjunpark",
+    }
   end,
 }
