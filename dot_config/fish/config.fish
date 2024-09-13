@@ -15,6 +15,10 @@ zoxide init fish | source
 status is-login; and pyenv init --path | source
 status is-interactive; and pyenv init - | source
 
+# fixes 'gpg failed to sign the data'
+gpg-connect-agent /bye
+export GPG_TTY=$(tty)
+
 # yazi
 function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
