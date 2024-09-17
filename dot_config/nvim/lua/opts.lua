@@ -22,8 +22,12 @@ vim.opt.tabstop = 4
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
+-- vim.opt.conceallevel = 2
+
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
+
+vim.opt.laststatus = 3
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -76,4 +80,4 @@ vim.opt.scrolloff = 10
 vim.opt.autoread = true
 
 -- Disable Neovim generating a swapfile and showing the error.
-vim.opt.swapfile = false
+-- vim.opt.swapfile = false

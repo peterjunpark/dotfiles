@@ -1,12 +1,35 @@
 return {
-  "folke/persistence.nvim",
-  event = "BufReadPre",
+  'folke/persistence.nvim',
+  event = 'BufReadPre',
   opts = {},
-  -- stylua: ignore
   keys = {
-    { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
-    { "<leader>qS", function() require("persistence").select() end,desc = "Select Session" },
-    { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-    { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+    {
+      '<leader>ss',
+      function()
+        require('persistence').load()
+      end,
+      desc = 'Restore session',
+    },
+    {
+      '<leader>sf',
+      function()
+        require('persistence').select()
+      end,
+      desc = 'Select session',
+    },
+    {
+      '<leader>sl',
+      function()
+        require('persistence').load { last = true }
+      end,
+      desc = 'Restore last session',
+    },
+    {
+      '<leader>sd',
+      function()
+        require('persistence').stop()
+      end,
+      desc = "Don't save current session",
+    },
   },
 }

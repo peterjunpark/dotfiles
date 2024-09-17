@@ -1,27 +1,45 @@
 return {
-  'xvzc/chezmoi.nvim',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  config = function()
-    require('chezmoi').setup {}
-    --  e.g. ~/.local/share/chezmoi/*
-    vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-      pattern = { os.getenv 'HOME' .. '/.local/share/chezmoi/*' },
-      callback = function(ev)
-        local bufnr = ev.buf
-        local edit_watch = function()
-          require('chezmoi.commands.__edit').watch(bufnr)
-        end
-        vim.schedule(edit_watch)
-      end,
-    })
-    -- telscope-config.lua
-    local telescope = require 'telescope'
-
-    telescope.setup {
-      -- ... your telescope config
-    }
-
-    telescope.load_extension 'chezmoi'
-    vim.keymap.set('n', '<leader>cz', telescope.extensions.chezmoi.find_files, {})
-  end,
+  {
+    -- highlighting for chezmoi files template files
+    'alker0/chezmoi.vim',
+    init = function()
+      vim.g['chezmoi#use_tmp_buffer'] = 1
+      vim.g['chezmoi#source_dir_path'] = os.getenv 'HOME' .. '/.local/share/chezmoi'
+    end,
+  },
+  {
+    'xvzc/chezmoi.nvim',
+    keys = {
+      {
+        '<leader>sz',
+        function()
+          require('telescope').extensions.chezmoi.find_files()
+        end,
+        desc = 'Chezmoi',
+      },
+    },
+    opts = {
+      edit = {
+        watch = false,
+        force = false,
+      },
+      notification = {
+        on_open = true,
+        on_apply = true,
+        on_watch = false,
+      },
+      telescope = {
+        select = { '<CR>' },
+      },
+    },
+    init = function()
+      -- run chezmoi edit on file enter
+      vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+        pattern = { os.getenv 'HOME' .. '/.local/share/chezmoi/*' },
+        callback = function()
+          vim.schedule(require('chezmoi.commands.__edit').watch)
+        end,
+      })
+    end,
+  },
 }

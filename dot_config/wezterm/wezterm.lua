@@ -53,19 +53,19 @@ config.keys = {
 	-- command palette
 	{ key = "p", mods = "CMD|SHIFT", action = act.ActivateCommandPalette },
 	-- pane select
-	{ key = "s", mods = "CMD", action = act.PaneSelect({ alphabet = "hjkl;" }) },
+	{ key = "s", mods = "ALT", action = act.PaneSelect({ alphabet = "hjkl;" }) },
 	-- toggle focus pane
-	{ key = "i", mods = "CMD", action = act.TogglePaneZoomState },
+	{ key = "i", mods = "ALT", action = act.TogglePaneZoomState },
 	-- close pane
-	{ key = "d", mods = "CMD", action = act.CloseCurrentPane({ confirm = false }) },
+	{ key = "d", mods = "ALT", action = act.CloseCurrentPane({ confirm = false }) },
 	-- new pane / vsplit
-	{ key = "o", mods = "CMD", action = act.SplitVertical },
+	{ key = "o", mods = "ALT", action = act.SplitVertical },
 	-- new pane / split
-	{ key = "p", mods = "CMD", action = act.SplitHorizontal },
+	{ key = "p", mods = "ALT", action = act.SplitHorizontal },
 	-- prev tab
 	{ key = "Backspace", mods = "CTRL", action = act.ActivateTabRelative(-1) },
 	-- scroll by line
-	{ key = "j", mods = "CMD", action = act.ScrollByLine(1) },
+	{ key = "j", mods = "ALT", action = act.ScrollByLine(1) },
 	{ key = "k", mods = "CMD", action = act.ScrollByLine(-1) },
 	-- scroll half page
 	{ key = "h", mods = "CMD", action = act.ScrollByPage(-0.5) },

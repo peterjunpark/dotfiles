@@ -37,15 +37,23 @@ return { -- Collection of various small independent plugins/modules
       return '%2l:%-2v'
     end
 
+    require('mini.bufremove').setup()
+
+    require('mini.tabline').setup()
+
     local starter = require 'mini.starter'
-    local pad = string.rep(' ', 14)
+    local pad = string.rep(' ', 20)
     local s_section = function(name, action, section)
       return { name = name, action = action, section = pad .. section }
     end
 
     starter.setup {
+      evaluate_single = true,
       items = {
+        s_section('New file', 'ene | startinsert', ''),
         s_section('Restore session', [[lua require("persistence").load()]], ''),
+        s_section('Plugins', 'Lazy', ''),
+        s_section('Quit', 'qa', ''),
       },
       footer = " peterjunpark",
     }
