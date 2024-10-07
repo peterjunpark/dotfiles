@@ -15,8 +15,8 @@ end
 -- background
 config.color_scheme = "tokyonight_night"
 -- font
-config.font = wezterm.font("0xProto")
-config.font_size = 16.0
+config.font = wezterm.font("Iosevka SS04")
+config.font_size = 18.0
 -- tab bar
 config.use_fancy_tab_bar = false
 -- config.hide_tab_bar_if_only_one_tab = true
