@@ -12,13 +12,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_autocmd({"InsertEnter"}, {
   pattern = "*",
   callback = function()
-    vim.opt.relativenumber = false
+    vim.wo.relativenumber = false
   end,
 })
 
 vim.api.nvim_create_autocmd({"InsertLeave"}, {
   pattern = "*",
   callback = function()
-    vim.opt.relativenumber = true
+    vim.wo.relativenumber = true
   end,
 })
