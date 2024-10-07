@@ -1,4 +1,3 @@
-local add = MiniDeps.add
 	require('mini.sessions').setup()
 
 	require('mini.ai').setup { n_lines = 500 }

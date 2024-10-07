@@ -1,9 +1,28 @@
 local add = MiniDeps.add
+local ferra = {
+	night = '#2b292d',
+	ash = '#383539',
+	umber = '#4d424b',
+	bark = '#6f5d63',
+	mist = '#d1d1e0',
+	sage = '#b1b695',
+	blush = '#fecdb2',
+	coral = '#ffa07a',
+	rose = '#f6b6c9',
+	ember = '#e06b75',
+	honey = '#f5d76e',
+}
 
-		add({ source = 'folke/tokyonight.nvim'})
-		add({ source= 'rose-pine/neovim', name='rose-pine' })
+add({ source = 'folke/tokyonight.nvim'})
 
-		vim.cmd.colorscheme 'tokyonight-night'
+require('tokyonight').setup({
+	style = 'night',
+	-- on_colors = function(colors)
+	-- 	colors.bg = ferra.night
+	-- end
+})
+
+vim.cmd.colorscheme 'tokyonight-night'
 
   require('mini.icons').setup()
 
@@ -19,23 +38,6 @@ local add = MiniDeps.add
     statusline.section_location = function()
       return '%2l::%-2v'
     end
-
-    local starter = require 'mini.starter'
-    local pad = string.rep(' ', 20)
-    local s_section = function(name, action, section)
-      return { name = name, action = action, section = pad .. section }
-    end
-
-    starter.setup {
-      evaluate_single = true,
-      items = {
-        s_section('New file', 'ene | startinsert', ''),
-        s_section('Restore session', MiniSessions.read, ''),
-        s_section('Plugins', 'Lazy', ''),
-        s_section('Quit', 'qa', ''),
-      },
-      footer = "  peterjunpark",
-    }
 
 local clue = require('mini.clue')
 clue.setup({
@@ -82,4 +84,4 @@ clue.setup({
   },
 })
 
-    require('mini.tabline').setup()
+require('mini.tabline').setup()
