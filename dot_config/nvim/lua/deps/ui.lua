@@ -1,32 +1,12 @@
 local add = MiniDeps.add
-local ferra = {
-	night = '#2b292d',
-	ash = '#383539',
-	umber = '#4d424b',
-	bark = '#6f5d63',
-	mist = '#d1d1e0',
-	sage = '#b1b695',
-	blush = '#fecdb2',
-	coral = '#ffa07a',
-	rose = '#f6b6c9',
-	ember = '#e06b75',
-	honey = '#f5d76e',
-}
 
-add({ source = 'folke/tokyonight.nvim'})
+add({ source = 'sainnhe/gruvbox-material'})
 
-require('tokyonight').setup({
-	style = 'night',
-	-- on_colors = function(colors)
-	-- 	colors.bg = ferra.night
-	-- end
-})
+vim.cmd.colorscheme 'gruvbox-material'
 
-vim.cmd.colorscheme 'tokyonight-night'
+require('mini.icons').setup()
 
-  require('mini.icons').setup()
-
-  require('mini.notify').setup()
+require('mini.notify').setup()
 
     local statusline = require 'mini.statusline'
     -- set use_icons to true if you have a Nerd Font
