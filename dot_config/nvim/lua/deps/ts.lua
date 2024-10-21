@@ -10,26 +10,27 @@ local parsers = {
 
 local add = MiniDeps.add
 
-  add({
-		  source = 'nvim-treesitter/nvim-treesitter',
-		  depends = {'nvim-treesitter/nvim-treesitter-context' },
-		  hooks = {
-				  post_checkout = function() vim.cmd 'TSUpdate' end,
-		  },
-  })
+add {
+	source = 'nvim-treesitter/nvim-treesitter',
+	depends = { 'nvim-treesitter/nvim-treesitter-context' },
+	hooks = {
+		post_checkout = function()
+			vim.cmd 'TSUpdate'
+		end,
+	},
+}
 
-  require('nvim-treesitter.configs').setup({
-      ensure_installed = parsers,
-	  auto_install = true,
-	  highlight = {
-			  enable = true,
-	  }
-  })
-  -- There are additional nvim-treesitter modules that you can use to interact
-  -- with nvim-treesitter. You should go explore a few and see what interests you:
-  --
-  --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-  --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-  --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-  -- FIXME: add https://github.com/stsewd/sphinx.nvim
-
+require('nvim-treesitter.configs').setup {
+	ensure_installed = parsers,
+	auto_install = true,
+	highlight = {
+		enable = true,
+	},
+}
+-- There are additional nvim-treesitter modules that you can use to interact
+-- with nvim-treesitter. You should go explore a few and see what interests you:
+--
+--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+-- FIXME: add https://github.com/stsewd/sphinx.nvim

@@ -13,17 +13,17 @@ vim.keymap.set('n', '<leader>q', '<cmd>:bd<CR>', { desc = 'Delete buffer and win
 
 --  NOTE: Windows
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<leader>wv', '<cmd>vsplit<CR>', { desc = 'Vertical split' })
-vim.keymap.set('n', '<leader>wx', '<cmd>split<CR>', { desc = 'Horizontal split' })
-vim.keymap.set('n', '<leader>wo', '<C-w><C-o>', { desc = 'Close all other windows' })
-vim.keymap.set('n', '<leader>ww', '<C-w><C-w>', { desc = 'Switch window' })
-vim.keymap.set('n', '<leader>ws', '<C-w><C-x>', { desc = 'Swap current window with next' })
---
-vim.keymap.set('n', '<leader>wq', '<C-w><C-q>', { desc = 'Close window' })
-vim.keymap.set('n', '<leader>wh', '<C-w><C-h>', { desc = 'Focus left window' })
-vim.keymap.set('n', '<leader>wj', '<C-w><C-j>', { desc = 'Focus lower window' })
-vim.keymap.set('n', '<leader>wk', '<C-w><C-k>', { desc = 'Focus upper window' })
-vim.keymap.set('n', '<leader>wl', '<C-w><C-l>', { desc = 'Focus right window' })
+-- vim.keymap.set('n', '<leader>wv', '<cmd>vsplit<CR>', { desc = 'Vertical split' })
+-- vim.keymap.set('n', '<leader>wx', '<cmd>split<CR>', { desc = 'Horizontal split' })
+-- vim.keymap.set('n', '<leader>wo', '<C-w><C-o>', { desc = 'Close all other windows' })
+-- vim.keymap.set('n', '<leader>ww', '<C-w><C-w>', { desc = 'Switch window' })
+-- vim.keymap.set('n', '<leader>ws', '<C-w><C-x>', { desc = 'Swap current window with next' })
+-- --
+-- vim.keymap.set('n', '<leader>wq', '<C-w><C-q>', { desc = 'Close window' })
+-- vim.keymap.set('n', '<leader>wh', '<C-w><C-h>', { desc = 'Focus left window' })
+-- vim.keymap.set('n', '<leader>wj', '<C-w><C-j>', { desc = 'Focus lower window' })
+-- vim.keymap.set('n', '<leader>wk', '<C-w><C-k>', { desc = 'Focus upper window' })
+-- vim.keymap.set('n', '<leader>wl', '<C-w><C-l>', { desc = 'Focus right window' })
 vim.keymap.set('n', '<C-q>', '<C-w><C-q>', { desc = 'Close window' })
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Focus left window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Focus lower window' })

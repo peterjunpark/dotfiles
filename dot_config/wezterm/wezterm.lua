@@ -13,7 +13,7 @@ end
 --- APPEARANCE
 
 -- background
-config.color_scheme = "tokyonight_night"
+config.color_scheme = "github_dark_dimmed"
 -- font
 config.font = wezterm.font("Iosevka SS04")
 config.font_size = 18.0

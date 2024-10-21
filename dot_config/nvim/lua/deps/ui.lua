@@ -1,67 +1,69 @@
 local add = MiniDeps.add
 
-add({ source = 'sainnhe/gruvbox-material'})
+add { source = 'projekt0n/github-nvim-theme' }
 
-vim.cmd.colorscheme 'gruvbox-material'
+vim.cmd.colorscheme 'github_dark_dimmed'
 
 require('mini.icons').setup()
 
 require('mini.notify').setup()
 
-    local statusline = require 'mini.statusline'
-    -- set use_icons to true if you have a Nerd Font
-    statusline.setup()
-    -- You can configure sections in the statusline by overriding their
-    -- default behavior. For example, here we set the section for
-    -- cursor location to LINE:COLUMN
-    ---@diagnostic disable-next-line: duplicate-set-field
-    statusline.section_location = function()
-      return '%2l::%-2v'
-    end
+require('mini.starter').setup()
 
-local clue = require('mini.clue')
-clue.setup({
-  triggers = {
-    -- Leader triggers
-    { mode = 'n', keys = '<Leader>' },
-    { mode = 'x', keys = '<Leader>' },
+local statusline = require 'mini.statusline'
+-- set use_icons to true if you have a Nerd Font
+statusline.setup()
+-- You can configure sections in the statusline by overriding their
+-- default behavior. For example, here we set the section for
+-- cursor location to LINE:COLUMN
+---@diagnostic disable-next-line: duplicate-set-field
+statusline.section_location = function()
+	return '%2l::%-2v'
+end
 
-    -- Built-in completion
-    { mode = 'i', keys = '<C-x>' },
+local clue = require 'mini.clue'
+clue.setup {
+	triggers = {
+		-- Leader triggers
+		{ mode = 'n', keys = '<Leader>' },
+		{ mode = 'x', keys = '<Leader>' },
 
-    -- `g` key
-    { mode = 'n', keys = 'g' },
-    { mode = 'x', keys = 'g' },
+		-- Built-in completion
+		{ mode = 'i', keys = '<C-x>' },
 
-    -- Marks
-    { mode = 'n', keys = "'" },
-    { mode = 'n', keys = '`' },
-    { mode = 'x', keys = "'" },
-    { mode = 'x', keys = '`' },
+		-- `g` key
+		{ mode = 'n', keys = 'g' },
+		{ mode = 'x', keys = 'g' },
 
-    -- Registers
-    { mode = 'n', keys = '"' },
-    { mode = 'x', keys = '"' },
-    { mode = 'i', keys = '<C-r>' },
-    { mode = 'c', keys = '<C-r>' },
+		-- Marks
+		{ mode = 'n', keys = "'" },
+		{ mode = 'n', keys = '`' },
+		{ mode = 'x', keys = "'" },
+		{ mode = 'x', keys = '`' },
 
-    -- Window commands
-    { mode = 'n', keys = '<C-w>' },
+		-- Registers
+		{ mode = 'n', keys = '"' },
+		{ mode = 'x', keys = '"' },
+		{ mode = 'i', keys = '<C-r>' },
+		{ mode = 'c', keys = '<C-r>' },
 
-    -- `z` key
-    { mode = 'n', keys = 'z' },
-    { mode = 'x', keys = 'z' },
-  },
+		-- Window commands
+		{ mode = 'n', keys = '<C-w>' },
 
-  clues = {
-    -- Enhance this by adding descriptions for <Leader> mapping groups
-    clue.gen_clues.builtin_completion(),
-    clue.gen_clues.g(),
-    clue.gen_clues.marks(),
-    clue.gen_clues.registers(),
-    clue.gen_clues.windows(),
-    clue.gen_clues.z(),
-  },
-})
+		-- `z` key
+		{ mode = 'n', keys = 'z' },
+		{ mode = 'x', keys = 'z' },
+	},
+
+	clues = {
+		-- Enhance this by adding descriptions for <Leader> mapping groups
+		clue.gen_clues.builtin_completion(),
+		clue.gen_clues.g(),
+		clue.gen_clues.marks(),
+		clue.gen_clues.registers(),
+		clue.gen_clues.windows(),
+		clue.gen_clues.z(),
+	},
+}
 
 require('mini.tabline').setup()
