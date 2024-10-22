@@ -24,7 +24,7 @@ local modules = {
 	'nav',
 	'ts',
 	'cmp',
-	-- 'lsp',
+	'lsp',
 }
 
 for _, module in ipairs(modules) do
