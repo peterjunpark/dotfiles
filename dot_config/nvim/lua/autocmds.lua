@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd('InsertLeave', {
 
 vim.api.nvim_create_autocmd('User', {
 	pattern = { 'MiniStarterOpened' },
-	desc = 'Disable mini.statusline for starter',
+	desc = 'Disable statusline for starter',
 	callback = function(data)
 		vim.b[data.buf].ministatusline_disable = true
 	end,

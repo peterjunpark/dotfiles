@@ -1,7 +1,5 @@
 local add = MiniDeps.add
 
--- add { source = 'tpope/vim-sleuth' }
-
 require('mini.sessions').setup()
 
 require('mini.ai').setup { n_lines = 500 }
@@ -26,6 +24,9 @@ require('mini.surround').setup()
 
 require('mini.bufremove').setup()
 
+add { source = 'hat0uma/csvview.nvim' }
+require('csvview').setup()
+
 local hipatterns = require 'mini.hipatterns'
 hipatterns.setup {
 	highlighters = {
@@ -35,4 +36,11 @@ hipatterns.setup {
 		note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
 		hex_color = hipatterns.gen_highlighter.hex_color(),
 	},
+}
+
+add { source = 'folke/snacks.nvim' }
+require('snacks').setup {
+	bigfile = { enabled = true },
+	lazygit = { enabled = true },
+	statuscolumn = { enabled = true },
 }

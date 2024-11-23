@@ -1,8 +1,14 @@
 local add = MiniDeps.add
 
-add { source = 'projekt0n/github-nvim-theme' }
+add {
+	source = 'EdenEast/nightfox.nvim',
+}
+add {
+	source = 'rose-pine/neovim',
+	name = 'rose-pine'
+}
 
-vim.cmd.colorscheme 'github_dark_dimmed'
+vim.cmd.colorscheme 'nightfox'
 
 require('mini.icons').setup()
 
