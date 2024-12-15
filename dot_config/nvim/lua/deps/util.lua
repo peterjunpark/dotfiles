@@ -1,8 +1,5 @@
 local add = MiniDeps.add
-local map = function(keys, func, desc, mode)
-	mode = mode or 'n'
-	vim.keymap.set(mode, keys, func, { desc = desc })
-end
+local map = require('custom.helpers').keymap
 
 require('mini.git').setup()
 require('mini.diff').setup()
@@ -68,14 +65,3 @@ end, 'Scratch')
 map('<leader>S', function()
 	Snacks.scratch.select()
 end, 'Scratch: Select')
-
-add {
-	source = 'MeanderingProgrammer/render-markdown.nvim',
-}
-
-local rendermd = require 'render-markdown'
-rendermd.setup()
-
-map('<leader>tm', function()
-	rendermd.toggle()
-end, 'Render markdown')

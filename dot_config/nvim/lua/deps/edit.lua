@@ -1,4 +1,5 @@
 local add = MiniDeps.add
+local map = require('custom.helpers').keymap
 
 -- Comment
 add { source = 'JoosepAlviste/nvim-ts-context-commentstring' }
@@ -41,3 +42,14 @@ vim.api.nvim_create_autocmd('FileType', {
 		vim.b.miniindentscope_disable = true
 	end,
 })
+
+add {
+	source = 'MeanderingProgrammer/render-markdown.nvim',
+}
+
+local rendermd = require 'render-markdown'
+rendermd.setup()
+
+map('<leader>om', function()
+	rendermd.toggle()
+end, 'Toggle: Render markdown')

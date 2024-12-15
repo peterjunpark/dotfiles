@@ -74,7 +74,7 @@ clue.setup {
 
 	clues = {
 		{ mode = 'n', keys = '<leader>p', desc = 'Pick' },
-		{ mode = 'n', keys = '<leader>t', desc = 'Toggle' },
+		{ mode = 'n', keys = '<leader>o', desc = 'Options' },
 		clue.gen_clues.builtin_completion(),
 		clue.gen_clues.g(),
 		clue.gen_clues.marks(),

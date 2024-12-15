@@ -1,8 +1,5 @@
-local add = MiniDeps.add
-local map = function(keys, func, desc, mode)
-	mode = mode or 'n'
-	vim.keymap.set(mode, keys, func, { desc = desc })
-end
+-- local add = MiniDeps.add
+local map = require('custom.helpers').keymap
 
 require('mini.pick').setup()
 require('mini.extra').setup()

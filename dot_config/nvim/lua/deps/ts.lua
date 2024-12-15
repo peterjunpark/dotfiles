@@ -38,10 +38,7 @@ local parsers = {
 }
 
 local add = MiniDeps.add
-local map = function(keys, func, desc, mode)
-	mode = mode or 'n'
-	vim.keymap.set(mode, keys, func, { desc = desc })
-end
+local map = require('custom.helpers').keymap
 
 add {
 	source = 'nvim-treesitter/nvim-treesitter',
@@ -61,7 +58,7 @@ require('nvim-treesitter.configs').setup {
 	},
 }
 
-map('<leader>tc', '<cmd>TSContextToggle<CR>', 'Treesitter context')
+map('<leader>oc', '<cmd>TSContextToggle<CR>', 'Treesitter: Context')
 -- There are additional nvim-treesitter modules that you can use to interact
 -- with nvim-treesitter. You should go explore a few and see what interests you:
 --
