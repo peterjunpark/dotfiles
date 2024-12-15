@@ -17,6 +17,7 @@ conform.setup {
 	},
 	notify_on_error = true,
 	formatters_by_ft = {
+		ts = { 'deno_fmt' },
 		lua = { 'stylua' },
 		go = { 'goimports', 'gofmt' },
 		fish = { 'fish_indent' },
@@ -25,5 +26,5 @@ conform.setup {
 }
 
 map('<leader>w', function()
-	conform.format ()
+	conform.format()
 end, 'Format buffer')

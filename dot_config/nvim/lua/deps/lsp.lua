@@ -121,7 +121,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local servers = {
 	clangd = {},
 	cssls = {},
-	elixirls = {},
 	esbonio = {},
 	gopls = {
 		settings = {
@@ -131,6 +130,8 @@ local servers = {
 		},
 	},
 	html = {},
+	-- ts
+	denols = {},
 	ts_ls = {},
 	pyright = {},
 	-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
