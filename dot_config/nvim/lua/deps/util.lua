@@ -1,30 +1,10 @@
 local add = MiniDeps.add
 local map = require('custom.helpers').keymap
 
-require('mini.git').setup()
-require('mini.diff').setup()
-require('mini.ai').setup { n_lines = 500 }
-
--- require('mini.indentscope').setup({
--- 	 symbol = "│",
--- 	 options = { try_as_border = true },
--- })
---  vim.api.nvim_create_autocmd("FileType", {
---      pattern = {
---        "help",
---        "mason",
---        "oil",
---        "notify",
---      },
---      callback = function()
---        vim.b.miniindentscope_disable = true
---      end,
---    })
-
-require('mini.surround').setup()
-
+add { source = 'echasnovski/mini.bufremove' }
 require('mini.bufremove').setup()
 
+add { source = 'echasnovski/mini.hipatterns' }
 local hipatterns = require 'mini.hipatterns'
 hipatterns.setup {
 	highlighters = {
@@ -44,15 +24,8 @@ require('snacks').setup {
 		ft = 'markdown',
 		win = { border = 'single' },
 	},
-	-- statuscolumn = { enabled = true },
+	statuscolumn = { enabled = true },
 }
-
-vim.api.nvim_create_autocmd('User', {
-	pattern = 'MiniFilesActionRename',
-	callback = function(event)
-		Snacks.rename.on_rename_file(event.data.from, event.data.to)
-	end,
-})
 
 map('<leader>g', function()
 	Snacks.lazygit()

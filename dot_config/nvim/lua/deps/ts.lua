@@ -1,3 +1,4 @@
+-- Treesitter
 local parsers = {
 	'bash',
 	'c',

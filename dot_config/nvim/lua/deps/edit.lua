@@ -7,6 +7,7 @@ require('ts_context_commentstring').setup {
 	enable_autocmd = false,
 }
 
+add { source = 'echasnovski/mini.comment' }
 require('mini.comment').setup {
 	options = {
 		custom_commentstring = function()
@@ -15,6 +16,12 @@ require('mini.comment').setup {
 	},
 }
 
+-- Around/inside
+add { source = 'echasnovski/mini.ai' }
+require('mini.ai').setup { n_lines = 500 }
+
+-- Autopairs
+add { source = 'echasnovski/mini.pairs' }
 require('mini.pairs').setup {
 	modes = { insert = true, command = true, terminal = false },
 	-- skip autopair when next character is one of these
@@ -28,21 +35,11 @@ require('mini.pairs').setup {
 	markdown = true,
 }
 
-require('mini.indentscope').setup {
-	options = { try_as_border = true },
-}
+-- Surround with s
+add { source = 'echasnovski/mini.surround' }
+require('mini.surround').setup()
 
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = {
-		'help',
-		'mason',
-		'oil',
-	},
-	callback = function()
-		vim.b.miniindentscope_disable = true
-	end,
-})
-
+-- Prettify markdown
 add {
 	source = 'MeanderingProgrammer/render-markdown.nvim',
 }

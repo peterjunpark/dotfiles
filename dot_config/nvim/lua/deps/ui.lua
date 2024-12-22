@@ -1,91 +1,305 @@
 local add = MiniDeps.add
 
+-- Colorscheme
 add {
 	source = 'rose-pine/neovim',
 	name = 'rose-pine',
 }
-
 require('rose-pine').setup {
 	highlight_groups = {
 		-- Highlight on search
 		CurSearch = { fg = 'base', bg = 'leaf', inherit = false },
 		Search = { fg = 'text', bg = 'leaf', blend = 20, inherit = false },
-
-		MiniIndentscopeSymbol = { fg = 'leaf' },
-		MiniStatuslineModeInsert = { bg = 'iris' },
-		MiniStatuslineModeVisual = { bg = 'foam' },
-		MiniStatuslineModeCommand = { bg = 'leaf' },
-		MiniStatuslineModeOther = { bg = 'love' },
 	},
 }
-
 vim.cmd.colorscheme 'rose-pine'
 
+-- Icons
+add { source = 'echasnovski/mini.icons' }
 require('mini.icons').setup()
 
+-- Notifications
+add { source = 'echasnovski/mini.notify' }
 require('mini.notify').setup()
 
-local statusline = require 'mini.statusline'
-statusline.setup {}
--- You can configure sections in the statusline by overriding their
--- default behavior. For example, here we set the section for
--- cursor location to LINE:COLUMN
----@diagnostic disable-next-line: duplicate-set-field
-statusline.section_location = function()
-	return '%2l::%-2v'
+add { source = 'akinsho/bufferline.nvim' }
+require('bufferline').setup()
+
+add { source = 'folke/which-key.nvim' }
+local wk = require 'which-key'
+wk.setup {
+	preset = 'helix',
+	win = {
+		border = 'single',
+	},
+}
+
+add { source = 'nvim-lualine/lualine.nvim' }
+local lualine = require 'lualine'
+local rp = require 'rose-pine.palette'
+
+-- Color table for highlights
+-- stylua: ignore
+local colors = {
+  bg       = rp.base,
+  fg       = rp.text,
+  yellow   = rp.gold,
+  cyan     = rp.rose,
+  darkblue = rp.foam,
+  green    = rp.pine,
+  orange   = rp.leaf,
+  violet   = rp.iris,
+  magenta  = rp.iris,
+  blue     = rp.foam,
+  red      = rp.love,
+}
+
+local conditions = {
+	buffer_not_empty = function()
+		return vim.fn.empty(vim.fn.expand '%:t') ~= 1
+	end,
+	hide_in_width = function()
+		return vim.fn.winwidth(0) > 80
+	end,
+	check_git_workspace = function()
+		local filepath = vim.fn.expand '%:p:h'
+		local gitdir = vim.fn.finddir('.git', filepath .. ';')
+		return gitdir and #gitdir > 0 and #gitdir < #filepath
+	end,
+}
+
+-- Config
+local config = {
+	options = {
+		-- Disable sections and component separators
+		component_separators = '',
+		section_separators = '',
+		theme = {
+			-- We are going to use lualine_c an lualine_x as left and
+			-- right section. Both are highlighted by c theme .  So we
+			-- are just setting default looks o statusline
+			normal = { c = { fg = colors.fg, bg = colors.bg } },
+			inactive = { c = { fg = colors.fg, bg = colors.bg } },
+		},
+	},
+	sections = {
+		-- these are to remove the defaults
+		lualine_a = {},
+		lualine_b = {},
+		lualine_y = {},
+		lualine_z = {},
+		-- These will be filled later
+		lualine_c = {},
+		lualine_x = {},
+	},
+	inactive_sections = {
+		-- these are to remove the defaults
+		lualine_a = {},
+		lualine_b = {},
+		lualine_y = {},
+		lualine_z = {},
+		lualine_c = {},
+		lualine_x = {},
+	},
+}
+
+-- Inserts a component in lualine_c at left section
+local function ins_left(component)
+	table.insert(config.sections.lualine_c, component)
 end
 
-local clue = require 'mini.clue'
-clue.setup {
-	window = {
-		delay = 240,
-	},
-	triggers = {
-		-- Leader triggers
-		{ mode = 'n', keys = '<leader>' },
-		{ mode = 'x', keys = '<leader>' },
+-- Inserts a component in lualine_x at right section
+local function ins_right(component)
+	table.insert(config.sections.lualine_x, component)
+end
 
-		-- Built-in completion
-		{ mode = 'i', keys = '<C-x>' },
+ins_left {
+	function()
+		return '▊'
+	end,
+	-- color = { fg = colors.blue }, -- Sets highlighting of component
+	color = function()
+		-- auto change color according to neovims mode
+		local mode_color = {
+			n = colors.red,
+			i = colors.green,
+			v = colors.blue,
+			[''] = colors.blue,
+			V = colors.blue,
+			c = colors.magenta,
+			no = colors.red,
+			s = colors.orange,
+			S = colors.orange,
+			[''] = colors.orange,
+			ic = colors.yellow,
+			R = colors.violet,
+			Rv = colors.violet,
+			cv = colors.red,
+			ce = colors.red,
+			r = colors.cyan,
+			rm = colors.cyan,
+			['r?'] = colors.cyan,
+			['!'] = colors.red,
+			t = colors.red,
+		}
+		return { fg = mode_color[vim.fn.mode()] }
+	end,
+	padding = { left = 0, right = 1 }, -- We don't need space before this
+}
+--
+-- ins_left {
+-- 	-- mode component
+-- 	function()
+-- 		return ''
+-- 	end,
+-- 	color = function()
+-- 		-- auto change color according to neovims mode
+-- 		local mode_color = {
+-- 			n = colors.red,
+-- 			i = colors.green,
+-- 			v = colors.blue,
+-- 			[''] = colors.blue,
+-- 			V = colors.blue,
+-- 			c = colors.magenta,
+-- 			no = colors.red,
+-- 			s = colors.orange,
+-- 			S = colors.orange,
+-- 			[''] = colors.orange,
+-- 			ic = colors.yellow,
+-- 			R = colors.violet,
+-- 			Rv = colors.violet,
+-- 			cv = colors.red,
+-- 			ce = colors.red,
+-- 			r = colors.cyan,
+-- 			rm = colors.cyan,
+-- 			['r?'] = colors.cyan,
+-- 			['!'] = colors.red,
+-- 			t = colors.red,
+-- 		}
+-- 		return { fg = mode_color[vim.fn.mode()] }
+-- 	end,
+-- 	padding = { right = 1 },
+-- }
 
-		-- `g` key
-		{ mode = 'n', keys = 'g' },
-		{ mode = 'x', keys = 'g' },
+ins_left {
+	-- filesize component
+	'filesize',
+	cond = conditions.buffer_not_empty,
+}
 
-		-- Marks
-		{ mode = 'n', keys = "'" },
-		{ mode = 'n', keys = '`' },
-		{ mode = 'x', keys = "'" },
-		{ mode = 'x', keys = '`' },
+ins_left {
+	'filename',
+	cond = conditions.buffer_not_empty,
+	color = { fg = colors.magenta, gui = 'bold' },
+}
 
-		-- Registers
-		{ mode = 'n', keys = '"' },
-		{ mode = 'x', keys = '"' },
-		{ mode = 'i', keys = '<C-r>' },
-		{ mode = 'c', keys = '<C-r>' },
+ins_left { 'location' }
 
-		-- Window commands
-		{ mode = 'n', keys = '<C-w>' },
+ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
-		-- `z` key
-		{ mode = 'n', keys = 'z' },
-		{ mode = 'x', keys = 'z' },
-	},
-
-	clues = {
-		{ mode = 'n', keys = '<leader>p', desc = 'Pick' },
-		{ mode = 'n', keys = '<leader>o', desc = 'Options' },
-		clue.gen_clues.builtin_completion(),
-		clue.gen_clues.g(),
-		clue.gen_clues.marks(),
-		clue.gen_clues.registers(),
-		clue.gen_clues.windows(),
-		clue.gen_clues.z(),
+ins_left {
+	'diagnostics',
+	sources = { 'nvim_diagnostic' },
+	symbols = { error = ' ', warn = ' ', info = ' ' },
+	diagnostics_color = {
+		error = { fg = colors.red },
+		warn = { fg = colors.yellow },
+		info = { fg = colors.cyan },
 	},
 }
 
-require('mini.starter').setup {
-	evaluate_single = true,
+-- Insert mid section. You can make any number of sections in neovim :)
+-- for lualine it's any number greater then 2
+ins_left {
+	function()
+		return '%='
+	end,
 }
 
-require('mini.tabline').setup()
+ins_left {
+	-- Lsp server name .
+	function()
+		local msg = 'No active LSP'
+		local buf_ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
+		local clients = vim.lsp.get_clients()
+		if next(clients) == nil then
+			return msg
+		end
+		for _, client in ipairs(clients) do
+			local filetypes = client.config.filetypes
+			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+				return client.name
+			end
+		end
+		return msg
+	end,
+	icon = ' LSP:',
+	color = { fg = '#ffffff', gui = 'bold' },
+}
+
+-- Add components to right sections
+ins_right {
+	'o:encoding', -- option component same as &encoding in viml
+	fmt = string.upper, -- I'm not sure why it's upper case either ;)
+	cond = conditions.hide_in_width,
+	color = { fg = colors.green, gui = 'bold' },
+}
+
+ins_right {
+	'fileformat',
+	fmt = string.upper,
+	icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+	color = { fg = colors.green, gui = 'bold' },
+}
+
+ins_right {
+	'branch',
+	icon = '',
+	color = { fg = colors.violet, gui = 'bold' },
+}
+
+ins_right {
+	'diff',
+	symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+	diff_color = {
+		added = { fg = colors.green },
+		modified = { fg = colors.orange },
+		removed = { fg = colors.red },
+	},
+	cond = conditions.hide_in_width,
+}
+
+ins_right {
+	function()
+		return '▊'
+	end,
+	color = function()
+		-- auto change color according to neovims mode
+		local mode_color = {
+			n = colors.red,
+			i = colors.green,
+			v = colors.blue,
+			[''] = colors.blue,
+			V = colors.blue,
+			c = colors.magenta,
+			no = colors.red,
+			s = colors.orange,
+			S = colors.orange,
+			[''] = colors.orange,
+			ic = colors.yellow,
+			R = colors.violet,
+			Rv = colors.violet,
+			cv = colors.red,
+			ce = colors.red,
+			r = colors.cyan,
+			rm = colors.cyan,
+			['r?'] = colors.cyan,
+			['!'] = colors.red,
+			t = colors.red,
+		}
+		return { fg = mode_color[vim.fn.mode()] }
+	end,
+	padding = { left = 1 },
+}
+
+lualine.setup(config)

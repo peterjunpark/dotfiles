@@ -17,7 +17,7 @@ vim.opt.mouse = 'a'
 -- vim.opt.conceallevel = 2
 
 -- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+-- vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.

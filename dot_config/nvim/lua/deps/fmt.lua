@@ -1,10 +1,9 @@
 local add = MiniDeps.add
 local map = require('custom.helpers').keymap
 
+-- Formatter
 add { source = 'stevearc/conform.nvim' }
-
 local conform = require 'conform'
-
 conform.setup {
 	default_format_opts = {
 		timeout_ms = 3000,
@@ -21,7 +20,6 @@ conform.setup {
 		sh = { 'shfmt' },
 	},
 }
-
 map('<leader>w', function()
 	conform.format()
 end, 'Format buffer')

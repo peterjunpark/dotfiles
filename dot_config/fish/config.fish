@@ -5,8 +5,6 @@ end
 # Generated for envman. Do not edit.
 test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
 
-starship init fish | source
-
 fzf --fish | source
 
 zoxide init fish | source
@@ -28,3 +26,4 @@ function y
 	end
 	rm -f -- "$tmp"
 end
+
