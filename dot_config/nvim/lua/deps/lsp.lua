@@ -21,20 +21,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(event)
 		local map = function(keys, func, desc, mode)
 			mode = mode or 'n'
-			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
+			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
 		end
-		--
-		-- -- Jump to the definition of the word under your cursor.
-		-- --  This is where a variable was first declared, or where a function is defined, etc.
-		-- --  To jump back, press <C-t>.
-		-- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+		local pick = MiniExtra.pickers.lsp
+
+		-- Jump to the definition of the word under your cursor.
+		--  This is where a variable was first declared, or where a function is defined, etc.
+		--  To jump back, press <C-t>.
+		map('gd', function()
+			pick { scope = 'definition' }
+		end, 'Goto definition')
 		--
 		-- -- Find references for the word under your cursor.
-		-- map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+		map('gr', function()
+			pick { scope = 'references' }
+		end, 'Goto references')
 		--
 		-- -- Jump to the implementation of the word under your cursor.
 		-- --  Useful when your language has ways of declaring types without an actual implementation.
-		-- map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+		map('gI', function()
+			pick { scope = 'implementation' }
+		end, 'Goto implementation')
 		--
 		-- -- Jump to the type of the word under your cursor.
 		-- --  Useful when you're not sure what type a variable is and you want to see
@@ -51,15 +58,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		--
 		-- Rename the variable under your cursor.
 		--  Most Language Servers support renaming across files, etc.
-		map('<leader>r', vim.lsp.buf.rename, 'LSP: Rename')
+		map('<leader>r', vim.lsp.buf.rename, 'Rename')
 
 		-- Execute a code action, usually your cursor needs to be on top of an error
 		-- or a suggestion from your LSP for this to activate.
-		map('<leader>a', vim.lsp.buf.code_action, 'LSP: Code action', { 'n', 'x' })
+		map('<leader>a', vim.lsp.buf.code_action, 'Code action', { 'n', 'x' })
 
 		-- WARN: This is not Goto Definition, this is Goto Declaration.
 		--  For example, in C this would take you to the header.
-		map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+		-- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
 		-- The following two autocommands are used to highlight references of the
 		-- word under your cursor when your cursor rests there for a little while.
@@ -119,7 +126,9 @@ local servers = {
 		capabilities = capabilities,
 		init_options = {
 			checker_args = '-strict-style',
+			-- TODO:
 			collections = {
+				{ name = 'builtin', path = vim.fn.expand '$HOME/odin/builtin'},
 				{ name = 'core', path = vim.fn.expand '$HOME/odin/core' },
 				{ name = 'vendor', path = vim.fn.expand '$HOME/odin/vendor' },
 				{ name = 'shared', path = vim.fn.expand '$HOME/odin/shared' },

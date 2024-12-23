@@ -27,7 +27,7 @@ require('snacks').setup {
 	statuscolumn = { enabled = true },
 }
 
-map('<leader>g', function()
+map('<leader>G', function()
 	Snacks.lazygit()
 end, 'Lazygit')
 

@@ -19,27 +19,27 @@ local map = require('custom.helpers').keymap
 map('<leader>od', '<cmd>DepsUpdate<CR>', 'Plugins: Update')
 
 local now, later = MiniDeps.now, MiniDeps.later
-local modules = {
+local load_now = {
 	'util',
 	'ui',
 	'nav',
 	'ts',
+}
+local load_later = {
 	'lsp',
-	'edit'
+	'fmt',
+	'git',
+	'edit',
 }
 
-for _, module in ipairs(modules) do
+for _, m in ipairs(load_now) do
 	now(function()
-		require('deps.' .. module)
+		require('deps.' .. m)
 	end)
 end
 
-later(function()
-	require 'deps.lsp'
-end)
-later(function()
-	require 'deps.fmt'
-end)
-later(function()
-	require 'deps.git'
-end)
+for _, m in ipairs(load_later) do
+	later(function()
+		require('deps.' .. m)
+	end)
+end
