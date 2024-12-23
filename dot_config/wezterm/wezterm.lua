@@ -18,7 +18,7 @@ config.default_domain = "WSL:Ubuntu"
 config.color_scheme = "rose-pine"
 -- font
 config.font = wezterm.font("0xProto")
-config.font_size = 13
+config.font_size = 14
 -- tab bar
 config.use_fancy_tab_bar = false
 config.tab_max_width = 42

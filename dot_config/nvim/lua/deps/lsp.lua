@@ -127,12 +127,12 @@ local servers = {
 		init_options = {
 			checker_args = '-strict-style',
 			-- TODO:
-			collections = {
-				{ name = 'builtin', path = vim.fn.expand '$HOME/odin/builtin'},
-				{ name = 'core', path = vim.fn.expand '$HOME/odin/core' },
-				{ name = 'vendor', path = vim.fn.expand '$HOME/odin/vendor' },
-				{ name = 'shared', path = vim.fn.expand '$HOME/odin/shared' },
-			},
+			-- collections = {
+			-- 	{ name = 'builtin', path = vim.fn.expand '$HOME/odin/builtin'},
+			-- 	{ name = 'core', path = vim.fn.expand '$HOME/odin/core' },
+			-- 	{ name = 'vendor', path = vim.fn.expand '$HOME/odin/vendor' },
+			-- 	{ name = 'shared', path = vim.fn.expand '$HOME/odin/shared' },
+			-- },
 		},
 	},
 	clangd = {},

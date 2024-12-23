@@ -1,22 +1,4 @@
 local add = MiniDeps.add
-local rp_ext = {
-	green = '#5cc1a3',
-	-- bright_green = '#31614f',
-	--
-	-- bright_red = '#7e3647',
-	--
-	-- bright_yellow = '#8a643a',
-	-- dim_yellow = '#fedfbb',
-	--
-	-- bright_blue = '#566b70',
-	-- dim_blue = '#cfe7eb',
-	--
-	-- magenta = '#9d7591',
-	-- bright_magenta = '#4c3b47',
-	-- dim_magenta = '#ceb9c7',
-	--
-	-- bright_cyan = '#203a46',
-}
 
 -- Colorscheme
 add {
@@ -24,17 +6,21 @@ add {
 	name = 'rose-pine',
 }
 require('rose-pine').setup {
+	palette = {
+		main = {
+			leaf = '#5cc1a3',
+		},
+	},
 	groups = {
-		git_add = rp_ext.green,
+		git_add = 'leaf'
 	},
 	highlight_groups = {
 		-- Syntax highlighting
-		['@constant'] = { fg = rp_ext.green },
-		Number = { fg = rp_ext.green },
-		Operator = { fg = 'leaf' },
-		-- Highlight on search
-		CurSearch = { fg = 'base', bg = 'leaf', inherit = false },
-		Search = { fg = 'text', bg = 'leaf', blend = 20, inherit = false },
+		['@constant'] = { fg = 'leaf' },
+		['@markup.link.label'] = { fg = 'text', italic = true },
+		['@tag.attribute'] = { fg = 'rose' },
+		Number = { fg = 'leaf' },
+		Operator = { fg = 'pine' },
 	},
 }
 vim.cmd.colorscheme 'rose-pine'
