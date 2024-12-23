@@ -115,6 +115,17 @@ local capabilities = require('blink.cmp').get_lsp_capabilities()
 --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 local nvim_lsp = require 'lspconfig'
 local servers = {
+	ols = {
+		capabilities = capabilities,
+		init_options = {
+			checker_args = '-strict-style',
+			collections = {
+				{ name = 'core', path = vim.fn.expand '$HOME/odin/core' },
+				{ name = 'vendor', path = vim.fn.expand '$HOME/odin/vendor' },
+				{ name = 'shared', path = vim.fn.expand '$HOME/odin/shared' },
+			},
+		},
+	},
 	clangd = {},
 	cssls = {},
 	esbonio = {},
@@ -151,7 +162,6 @@ local servers = {
 			},
 		},
 	},
-	ols = {},
 }
 
 -- Ensure the servers and tools above are installed
