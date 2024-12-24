@@ -14,7 +14,6 @@ map('K', ":m '<-2<CR>gv=gv", 'Move line up', 'v')
 -- Cycle through buffers.
 map('<Tab>', '<cmd>bnext<CR>')
 map('<Backspace>', '<cmd>bprev<CR>')
-map('<leader>q', '<cmd>:bdelete<CR>', 'Delete buffer and window')
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`

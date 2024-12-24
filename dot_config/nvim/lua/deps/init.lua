@@ -15,31 +15,22 @@ if not vim.loop.fs_stat(mini_path) then
 end
 
 require('mini.deps').setup { path = { package = path_package } }
-local map = require('custom.helpers').keymap
-map('<leader>od', '<cmd>DepsUpdate<CR>', 'Plugins: Update')
+
+vim.keymap.set('n', '<leader>od', '<cmd>DepsUpdate<CR>', { desc = 'Deps: Update' })
 
 local now, later = MiniDeps.now, MiniDeps.later
-local load_now = {
-	'util',
-	'ui',
-	'nav',
-	'ts',
-}
-local load_later = {
-	'lsp',
-	'fmt',
-	'git',
-	'edit',
-}
 
-for _, m in ipairs(load_now) do
-	now(function()
-		require('deps.' .. m)
-	end)
-end
+local load_now = { 'ui', 'util', 'nav', 'ts' }
+local load_later = { 'lsp', 'fmt', 'git', 'edit' }
 
-for _, m in ipairs(load_later) do
-	later(function()
-		require('deps.' .. m)
-	end)
+local function load_deps(modules, loader)
+	for _, m in ipairs(modules) do
+		loader(function()
+			if not pcall(require, 'deps.' .. m) then
+				vim.cmd('echohl ErrorMsg | echo "Failed to load module `deps.' .. m .. '`" | echohl None')
+			end
+		end)
+	end
 end
+load_deps(load_now, now)
+load_deps(load_later, later)

@@ -1,4 +1,5 @@
 local add = MiniDeps.add
+local icons = require 'custom.icons'
 
 -- Colorscheme
 add {
@@ -12,15 +13,18 @@ require('rose-pine').setup {
 		},
 	},
 	groups = {
-		git_add = 'leaf'
+		git_add = 'leaf',
 	},
 	highlight_groups = {
 		-- Syntax highlighting
 		['@constant'] = { fg = 'leaf' },
+		['@markup.heading'] = { fg = 'leaf' },
 		['@markup.link.label'] = { fg = 'text', italic = true },
 		['@tag.attribute'] = { fg = 'rose' },
+		['@variable.member'] = { fg = 'iris' },
+		['@property'] = { fg = 'iris' },
 		Number = { fg = 'leaf' },
-		Operator = { fg = 'pine' },
+		-- Whitespace = { fg = 'highlight_med' },
 	},
 }
 vim.cmd.colorscheme 'rose-pine'
@@ -44,6 +48,22 @@ wk.setup {
 		border = 'single',
 	},
 }
+
+-- Diagnostics
+vim.diagnostic.config {
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+			[vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+			[vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+			[vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+		},
+	},
+}
+
+add { source = 'rachartier/tiny-inline-diagnostic.nvim' }
+require('tiny-inline-diagnostic').setup {}
+vim.diagnostic.config { virtual_text = false }
 
 add { source = 'nvim-lualine/lualine.nvim' }
 local lualine = require 'lualine'
@@ -211,7 +231,7 @@ ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 ins_left {
 	'diagnostics',
 	sources = { 'nvim_diagnostic' },
-	symbols = { error = ' ', warn = ' ', info = ' ' },
+	symbols = { error = icons.diagnostics.Error, warn = icons.diagnostics.Warn, info = icons.diagnostics.Info },
 	diagnostics_color = {
 		error = { fg = colors.red },
 		warn = { fg = colors.yellow },

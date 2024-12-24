@@ -4,21 +4,19 @@ local map = require('custom.helpers').keymap
 add { source = 'echasnovski/mini.bufremove' }
 require('mini.bufremove').setup()
 
-add { source = 'echasnovski/mini.hipatterns' }
-local hipatterns = require 'mini.hipatterns'
-hipatterns.setup {
-	highlighters = {
-		fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-		hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
-		todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
-		note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
-		hex_color = hipatterns.gen_highlighter.hex_color(),
-	},
-}
-
 add { source = 'folke/snacks.nvim' }
 require('snacks').setup {
 	bigfile = { enabled = true },
+	indent = {
+		only_current = true,
+		only_scope = true,
+	},
+	input = {
+		win = {
+			border = 'single',
+			title_pos = 'left',
+		},
+	},
 	lazygit = { configure = true },
 	scratch = {
 		ft = 'markdown',
@@ -26,6 +24,10 @@ require('snacks').setup {
 	},
 	statuscolumn = { enabled = true },
 }
+
+map('<leader>q', function()
+	Snacks.bufdelete()
+end, 'Delete buffer')
 
 map('<leader>G', function()
 	Snacks.lazygit()

@@ -1,11 +1,9 @@
-local M = {}
-
-M.icons = {
+return {
 	misc = {
 		dots = '󰇘',
 	},
 	ft = {
-		octo = '',
+		octo = ' ',
 	},
 	dap = {
 		Stopped = { '󰁕 ', 'DiagnosticWarn', 'DapStoppedLine' },
@@ -15,10 +13,10 @@ M.icons = {
 		LogPoint = '.>',
 	},
 	diagnostics = {
-		Error = ' ',
-		Warn = ' ',
-		Hint = ' ',
-		Info = ' ',
+		Error = '',
+		Warn = '',
+		Info = '',
+		Hint = '',
 	},
 	git = {
 		added = ' ',
@@ -68,5 +66,3 @@ M.icons = {
 		Variable = '󰀫 ',
 	},
 }
-
-return M

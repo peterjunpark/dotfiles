@@ -25,20 +25,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end
 		local pick = MiniExtra.pickers.lsp
 
-		-- Jump to the definition of the word under your cursor.
-		--  This is where a variable was first declared, or where a function is defined, etc.
-		--  To jump back, press <C-t>.
 		map('gd', function()
 			pick { scope = 'definition' }
 		end, 'Goto definition')
-		--
-		-- -- Find references for the word under your cursor.
+
 		map('gr', function()
 			pick { scope = 'references' }
 		end, 'Goto references')
-		--
-		-- -- Jump to the implementation of the word under your cursor.
-		-- --  Useful when your language has ways of declaring types without an actual implementation.
+
 		map('gI', function()
 			pick { scope = 'implementation' }
 		end, 'Goto implementation')
@@ -126,13 +120,6 @@ local servers = {
 		capabilities = capabilities,
 		init_options = {
 			checker_args = '-strict-style',
-			-- TODO:
-			-- collections = {
-			-- 	{ name = 'builtin', path = vim.fn.expand '$HOME/odin/builtin'},
-			-- 	{ name = 'core', path = vim.fn.expand '$HOME/odin/core' },
-			-- 	{ name = 'vendor', path = vim.fn.expand '$HOME/odin/vendor' },
-			-- 	{ name = 'shared', path = vim.fn.expand '$HOME/odin/shared' },
-			-- },
 		},
 	},
 	clangd = {},
@@ -155,7 +142,7 @@ local servers = {
 		root_dir = nvim_lsp.util.root_pattern 'package.json',
 		single_file_support = false,
 	},
-	pyright = {},
+	basedpyright = {},
 	-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 	lua_ls = {
 		-- cmd = {...},
@@ -187,7 +174,6 @@ local ensure_installed = vim.tbl_keys(servers or {})
 vim.list_extend(ensure_installed, {
 	'gofumpt', -- Stricter gofmt
 	'goimports', -- Sort imports in Go files
-	-- 'prettier',
 	'stylua', -- Used to format Lua code
 })
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
